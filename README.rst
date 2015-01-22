@@ -10,8 +10,6 @@ Es un proyecto Python, que sirve de Wrapper al API de : `Brightcove <http://http
 Requiere:
 ---------
 
-::
-
 - No tiene dependencias que instalar
 
 
