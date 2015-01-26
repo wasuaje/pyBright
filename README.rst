@@ -2,7 +2,7 @@
 PyBright
 =======
 
-Es un proyecto Python, que sirve de Wrapper al API de : `Brightcove <http://www.Brigtcove.com>`_.
+Es un proyecto Python, que sirve de Wrapper al API de : `Brightcove <http://www.brigtcove.com>`_.
 
 
 
