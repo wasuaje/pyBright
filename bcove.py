@@ -363,7 +363,7 @@ if __name__ == "__main__":
 
 	if not (options.video or options.playlist):
 		parser.print_help()
-		parser.error('Necesita elegir entre playlist o videos')
+		parser.error('Necesita elegir entre playlist o ')
 
 	
 	if options.video:
