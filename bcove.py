@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from optparse import OptionParser
+#from optparse import OptionParser
+import argparse
 import urllib,httplib
 import urllib2
 import simplejson as json
@@ -59,39 +60,41 @@ class bcove:
 		response = urllib2.urlopen(req)
 		thePage = response.read()
 		f=json.loads(thePage)	
-		
-		#obtengo por primera vez el conteo total de videos
-		total_videos = f['total_count']
-		#como puedo obtener 100 resultados obtengo el total de paginas
-		pg_size=20
-		paginas=math.ceil(total_videos/pg_size)	
-		paginas=int(paginas)
-		
-		#itero por cada pagina obtenido en el paso anterior
-		for pg in range(0,paginas+1):
-			self.parametros['page_number']=pg
-			self.parametros['page_size']=pg_size
-			#parametros.pop('video_fields')
-			self.parametros[self.tip+'_fields']=self.titulos
-			submitVarsUrlencoded = urllib.urlencode(self.parametros)	
-			req = urllib2.Request(bcove.url,submitVarsUrlencoded)
-			response = urllib2.urlopen(req)
-			thePage = response.read()
-			try:
-				f=json.loads(thePage)	
-			except:
-				print "Error:", thePage
-			#print f		
-			print "pagina: %s" % pg		
-			try:
-				#itero por el contenido de cada pagina y lo salvo en un dict local
-				for i in f['items']:
-					#video_data[i['id']]={'nombre':i['name'],'url':i['FLVURL'],'descargado':0}
-					video_data[i['id']]=i									
-			except KeyError:
-				print f['error']
-				#print "Error obteniendo la informacion, tal vez deba ejecutar el script de nuevo",sys.exc_info()[0],sys.exc_info()[1]        
-			#time.sleep(60)
+		if  f['error']:
+			print f['error']
+		else:
+			#obtengo por primera vez el conteo total de videos
+			total_videos = f['total_count']
+			#como puedo obtener 100 resultados obtengo el total de paginas
+			pg_size=20
+			paginas=math.ceil(total_videos/pg_size)	
+			paginas=int(paginas)
+			
+			#itero por cada pagina obtenido en el paso anterior
+			for pg in range(0,paginas+1):
+				self.parametros['page_number']=pg
+				self.parametros['page_size']=pg_size
+				#parametros.pop('video_fields')
+				self.parametros[self.tip+'_fields']=self.titulos
+				submitVarsUrlencoded = urllib.urlencode(self.parametros)	
+				req = urllib2.Request(bcove.url,submitVarsUrlencoded)
+				response = urllib2.urlopen(req)
+				thePage = response.read()
+				try:
+					f=json.loads(thePage)	
+				except:
+					print "Error:", thePage
+				#print f		
+				print "pagina: %s" % pg		
+				try:
+					#itero por el contenido de cada pagina y lo salvo en un dict local
+					for i in f['items']:
+						#video_data[i['id']]={'nombre':i['name'],'url':i['FLVURL'],'descargado':0}
+						video_data[i['id']]=i									
+				except KeyError:
+					print f['error']
+					#print "Error obteniendo la informacion, tal vez deba ejecutar el script de nuevo",sys.exc_info()[0],sys.exc_info()[1]        
+				#time.sleep(60)
 
 		#serializo el contenido del dict local
 		if os.path.exists(self.dataf):
@@ -338,30 +341,30 @@ if __name__ == "__main__":
 	wtoken=config.get('Config','wtoken')
 	medulatoken=config.get('Config','medulatoken')
 
-	print wtoken
-
 	usage = "utilizacion: %prog [options] "
-	parser = OptionParser(usage)
-	#parser.add_option("-h", "--help", action="help")
-		
-	parser.add_option("-v", "--video",  action="store_true", dest="video", help='Selecciona trabajar con Videos: ')
-	parser.add_option("-p", "--playlist",  action="store_true", dest="playlist", help='Selecciona para trabajar con Playlists: ')	
-	parser.add_option("-l", "--load",  action="store_true", dest="load", help='Descarga la data de Brightcove a este equipo, luego puede usar exportarla a csv' )    	
-	parser.add_option("-x", "--export", action="store_true", dest="export", help='Exporta la data a un fichero .csv')	
-	parser.add_option("-f", "--find",  action="store", dest="find", type="int", help='Busca un item por id en la data local' )    	
-	parser.add_option("-g", "--gets",  action="store", dest="gets", type="int", help='Get Item por id en la data remota rbightcove' )    	
-	parser.add_option("-t", "--tags",  action="store", dest="tags", type="str", help='Busca un item por tags' )    	
-	parser.add_option("-u", "--update",  action="store", dest="update", type="int", help='Actualiza a alwaysVallable un id' )    	
-	parser.add_option("-c", "--cfind",  action="store", dest="creat", type="str", help='Busca un item por creation date' )    	
-	parser.add_option("-d", "--download",  action="store", dest="download", type="int", help='Descarga un video desde Brightcove dado un ID ') 
-	parser.add_option("-r", "--remove",  action="store", dest="remove", type="int", help='Elimina video de Brightcove dado un ID ') 
-	parser.add_option("-b", "--bestr",  action="store", dest="bestr", type="int", help='Descarga el mejor rendition del video dado un ID ') 
-
+	parser = argparse.ArgumentParser(description='Wrapper around Brightcove API')
 	
-	(options, args) = parser.parse_args()
-	#print len(args)
-	if len(args) < 1:		
-		print parser.print_help()
+		
+	parser.add_argument("-v", "--video",  action="store_true", dest="video", help='Selecciona trabajar con Videos: ')
+	parser.add_argument("-p", "--playlist",  action="store_true", dest="playlist", help='Selecciona para trabajar con Playlists: ')	
+	parser.add_argument("-l", "--load",  action="store_true", dest="load", help='Descarga la data de Brightcove a este equipo, luego puede usar exportarla a csv' )    	
+	parser.add_argument("-x", "--export", action="store_true", dest="export", help='Exporta la data a un fichero .csv')	
+	parser.add_argument("-f", "--find",  action="store", dest="find", type=int, help='Busca un item por id en la data local' )    	
+	parser.add_argument("-g", "--gets",  action="store", dest="gets", type=int, help='Get Item por id en la data remota rbightcove' )    	
+	parser.add_argument("-t", "--tags",  action="store", dest="tags", type=str, help='Busca un item por tags' )    	
+	parser.add_argument("-u", "--update",  action="store", dest="update", type=int, help='Actualiza a alwaysVallable un id' )    	
+	parser.add_argument("-c", "--cfind",  action="store", dest="creat", type=str, help='Busca un item por creation date' )    	
+	parser.add_argument("-d", "--download",  action="store", dest="download", type=int, help='Descarga un video desde Brightcove dado un ID ') 
+	parser.add_argument("-r", "--remove",  action="store", dest="remove", type=int, help='Elimina video de Brightcove dado un ID ') 
+	parser.add_argument("-b", "--bestr",  action="store", dest="bestr", type=int, help='Descarga el mejor rendition del video dado un ID ') 
+
+	options = parser.parse_args()
+	
+
+	if not (options.video or options.playlist):
+		parser.print_help()
+		parser.error('Necesita elegir entre playlist o videos')
+
 	
 	if options.video:
 		tipo='vid'
