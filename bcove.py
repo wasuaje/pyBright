@@ -327,12 +327,19 @@ class bcove:
 		file.close()
 
 #Variables necesarias solo para pruebas la version definitiva no debe tener etos token debe proporcionarlo el usuario
-rtoken='add your read brightcove token'
-wtoken='add your read brightcove token'
-         
-medulatoken=""
+
 
 if __name__ == "__main__":
+
+	config = ConfigParser.ConfigParser()
+	config.readfp(open('defaults.cfg'))
+
+	rtoken=config.get('Config','rtoken')
+	wtoken=config.get('Config','wtoken')
+	medulatoken=config.get('Config','medulatoken')
+
+	print wtoken
+
 	usage = "utilizacion: %prog [options] "
 	parser = OptionParser(usage)
 	#parser.add_option("-h", "--help", action="help")
