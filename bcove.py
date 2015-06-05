@@ -321,15 +321,10 @@ class bcove:
 			#else:
 			#	raise Exception("Archivo eliminado o no disponible en Brightcove")
 			
-
-
 	def write_file(self,file,newLine):	
 		file = open(file, "a")
 		file.write(newLine)
 		file.close()
-
-#Variables necesarias solo para pruebas la version definitiva no debe tener etos token debe proporcionarlo el usuario
-
 
 if __name__ == "__main__":
 
@@ -358,7 +353,6 @@ if __name__ == "__main__":
 	parser.add_argument("-b", "--bestr",  action="store", dest="bestr", type=int, help='Descarga el mejor rendition del video dado un ID ') 
 
 	options = parser.parse_args()
-	
 
 	if not (options.video or options.playlist):
 		parser.print_help()
