@@ -10,9 +10,14 @@ Es un proyecto Python, que sirve de Wrapper al API de : `Brightcove <http://www.
 Requiere:
 ---------
 
-- Requiere SimplJson 
+- Requiere SimpleJson 
 
  pip install simplejson
+
+- Requiere un archivo de configuracion con los valores wtoken y rtoken llamado defaults.cfg
+ [Config]
+ rtoken='insert read token here'
+ wtoken='insert write token here'  
 
 
 Instalacion:
