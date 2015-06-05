@@ -239,8 +239,7 @@ class bcove:
 		thePage = response.read()
 		f=json.loads(thePage)	
 		#resutlado esperado en json 	{"result": {}, "error": null, "id": null}
-		if f["error"] == None:
-			#print f
+		if "error" in f:			
 			print "Video Actualizado"
 		else:
 			print "Error",f["error"]
@@ -261,7 +260,7 @@ class bcove:
 		thePage = response.read()
 		f=json.loads(thePage)	
 		#resutlado esperado en json 	{"result": {}, "error": null, "id": null}
-		if f["error"] == None:
+		if "error" in f:
 			#print f
 			print "Video eliminado"
 		else:
