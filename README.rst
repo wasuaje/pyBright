@@ -30,7 +30,7 @@ Requiere:
 Instalacion:
 ------------
 
-- Solo coloque su read token y su write token
+- Solo coloque su read token y su write token dentro defaults.cfg
 
 ::
 

@@ -339,7 +339,7 @@ if __name__ == "__main__":
 		
 	parser.add_option("-v", "--video",  action="store_true", dest="video", help='Selecciona trabajar con Videos: ')
 	parser.add_option("-p", "--playlist",  action="store_true", dest="playlist", help='Selecciona para trabajar con Playlists: ')	
-	parser.add_option("-l", "--load",  action="store_true", dest="load", help='Descarga la data de Brightcove a este equipo, luego puede usar -l para listarla mas rapidamente' )    	
+	parser.add_option("-l", "--load",  action="store_true", dest="load", help='Descarga la data de Brightcove a este equipo, luego puede usar exportarla a csv' )    	
 	parser.add_option("-x", "--export", action="store_true", dest="export", help='Exporta la data a un fichero .csv')	
 	parser.add_option("-f", "--find",  action="store", dest="find", type="int", help='Busca un item por id en la data local' )    	
 	parser.add_option("-g", "--gets",  action="store", dest="gets", type="int", help='Get Item por id en la data remota rbightcove' )    	
@@ -350,16 +350,11 @@ if __name__ == "__main__":
 	parser.add_option("-r", "--remove",  action="store", dest="remove", type="int", help='Elimina video de Brightcove dado un ID ') 
 	parser.add_option("-b", "--bestr",  action="store", dest="bestr", type="int", help='Descarga el mejor rendition del video dado un ID ') 
 
-
-	#parser.add_option("-r", "--remove",  action="store", dest="id", type="int", help='Elimina un video en Brightcove un id')    	
-	#parser.add_option("-s", "--show",  action="store", dest="id2", type="int", help='Muestra la data para un video que esta en Brightcove')    	
-	
-
 	
 	(options, args) = parser.parse_args()
 	#print len(args)
-	#if len(args) < 3:
-	#	parser.error("numero incorrecto de argumentos")	
+	if len(args) < 1:		
+		print parser.print_help()
 	
 	if options.video:
 		tipo='vid'
