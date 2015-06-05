@@ -23,8 +23,8 @@ Requiere:
 ::
 
  [Config]
- rtoken='insert read token here'
- wtoken='insert write token here'  
+ rtoken=insert read token here
+ wtoken=insert write token here
 
 
 Instalacion:

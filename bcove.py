@@ -60,7 +60,7 @@ class bcove:
 		response = urllib2.urlopen(req)
 		thePage = response.read()
 		f=json.loads(thePage)	
-		if  f['error']:
+		if  'error' in f :
 			print f['error']
 		else:
 			#obtengo por primera vez el conteo total de videos
@@ -363,7 +363,7 @@ if __name__ == "__main__":
 
 	if not (options.video or options.playlist):
 		parser.print_help()
-		parser.error('Necesita elegir entre playlist o ')
+		parser.error('Necesita elegir entre playlist o video')
 
 	
 	if options.video:
