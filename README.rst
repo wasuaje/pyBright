@@ -12,7 +12,9 @@ Requiere:
 
 - Requiere SimpleJson 
 
+::
  pip install simplejson
+
 
 - Requiere un archivo de configuracion con los valores wtoken y rtoken llamado defaults.cfg
  
