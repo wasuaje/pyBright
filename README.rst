@@ -17,6 +17,7 @@ Requiere:
 - Requiere un archivo de configuracion con los valores wtoken y rtoken llamado defaults.cfg
  
 ::
+
  [Config]
 
  rtoken='insert read token here'
