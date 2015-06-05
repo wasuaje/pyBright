@@ -10,7 +10,9 @@ Es un proyecto Python, que sirve de Wrapper al API de : `Brightcove <http://www.
 Requiere:
 ---------
 
-- No tiene dependencias que instalar
+- Requiere SimplJson 
+
+ pip install simplejson
 
 
 Instalacion:

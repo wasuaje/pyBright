@@ -10,6 +10,7 @@ import os
 import datetime
 import sys
 import time
+import ConfigParser
 #modulo para serializar el diccionario con la data
 try:
     import cPickle as pickle
@@ -283,6 +284,7 @@ class bcove:
 		else:
 			raise Exception("Archivo ya descargado !")
 
+	#descarga el video de mejor calidad o best rendition
 	def download_br_video(self,vidid):		
 		#data=self.read_data()	#local data 
 		#if vidid in data.keys():
