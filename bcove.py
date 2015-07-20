@@ -302,7 +302,7 @@ class bcove:
 		#print dat[ord[0]]
 		#sys.exit(1)
 		#print f
-		#cuando ya ordene los renditios
+		#cuando ya ordene los renditions
 		#url=f['videoFullLength']['url']		
 		url=dat[ord[0]]
 		desc=f['shortDescription']
