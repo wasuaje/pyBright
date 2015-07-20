@@ -30,11 +30,11 @@ Requiere:
 Instalacion:
 ------------
 
-- Luego de clonar el proyecto, coloque su read token y su write token dentro de un archivo llamado defaults.cfg
+- Luego de clonar el proyecto en un directorio vacìo, coloque su read token y su write token dentro de un archivo llamado defaults.cfg en la raiz de su proyecto
 
 ::
  
- git clone https://github.com/wasuaje/pyBright.git
+ git clone https://github.com/wasuaje/pyBright.git .
 
 
 
