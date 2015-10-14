@@ -60,13 +60,14 @@ class bcove:
 		response = urllib2.urlopen(req)
 		thePage = response.read()
 		f=json.loads(thePage)	
+		time.sleep(5)
 		if  'error' in f :
 			print f['error']
 		else:
 			#obtengo por primera vez el conteo total de videos
 			total_videos = f['total_count']
 			#como puedo obtener 100 resultados obtengo el total de paginas
-			pg_size=20
+			pg_size=10
 			paginas=math.ceil(total_videos/pg_size)	
 			paginas=int(paginas)
 			
@@ -80,6 +81,7 @@ class bcove:
 				req = urllib2.Request(bcove.url,submitVarsUrlencoded)
 				response = urllib2.urlopen(req)
 				thePage = response.read()
+				time.sleep(2)
 				try:
 					f=json.loads(thePage)	
 				except:
@@ -155,6 +157,29 @@ class bcove:
 			return a[id]							
 		else:
 			print "No se encontro item con id",id
+	
+	def get_summary(self):
+		print "Obteniendo resumen de la data"
+		a=self.read_data()			
+		#print(json.dumps(a, sort_keys=True, indent=4 * ' '))
+		dt={}
+		dt["cantidad"]=len(a)
+		tot_renditions=0
+		tot_full_len=0
+		tot_br=0
+		for id in a:	
+			#print "ID", id		
+			#print a[id]	
+			if 	a[id]["videoFullLength"]:
+				#print a[id]["renditions"]
+				tot_full_len+=a[id]["videoFullLength"]["size"]
+			for ren in a[id]["renditions"]:				
+				tot_renditions+=ren["size"]
+		dt["size_full_len_GB"]=tot_full_len/1024/1024/1024
+		dt["size_renditions_GB"]=tot_renditions/1024/1024/1024
+		print json.dumps(dt, sort_keys=True, indent=4 * ' ')
+		return json.dumps(dt, sort_keys=True, indent=4 * ' ')
+
 
 	def find_item_by_id(self,id):
 		print "find_item_by_id",id
@@ -287,9 +312,7 @@ class bcove:
 			raise Exception("Archivo ya descargado !")
 
 	#descarga el video de mejor calidad o best rendition
-	def download_br_video(self,vidid):		
-		#data=self.read_data()	#local data 
-		#if vidid in data.keys():
+	def download_br_video(self,vidid):				
 		#video con todos sus renditions
 		dat={}
 		f=self.find_item_by_id(vidid)		
@@ -298,10 +321,7 @@ class bcove:
 			return None
 		for rn in f["renditions"]:
 			dat[rn["size"]]=rn["url"]		
-		ord=sorted(dat,reverse = True)
-		#print dat[ord[0]]
-		#sys.exit(1)
-		#print f
+		ord=sorted(dat,reverse = True)		
 		#cuando ya ordene los renditions
 		#url=f['videoFullLength']['url']		
 		url=dat[ord[0]]
@@ -311,15 +331,47 @@ class bcove:
 			tamano=ord[0]/1000.00/1000.00
 			print u"Archivo: %s, tamaño: %s MB" % (file_name, tamano)
 			print u"Desde URL: ",url
-			urllib.urlretrieve (url, file_name)
-			print "Descarga finalizada"
-			#return file_name,desc
-			#mejor retorno el objeto completo con toda la data del video en proceso se extrae lo que se necesite
+			resp=urllib.urlretrieve (url, file_name)			
+			print "Descarga finalizada"			
+			#retorno el objeto completo con toda la data del video en proceso se extrae lo que se necesite
 			return f,file_name
 		else:
-			raise Exception("Archivo ya descargado en disco !")
-			#else:
-			#	raise Exception("Archivo eliminado o no disponible en Brightcove")
+			#raise Exception("Archivo ya descargado en disco !")
+			print "Archivo ya descargado en disco !"
+			return None 			
+	
+	# descarga el video de mejor calidad o best rendition
+	# solo que el nombre del video es el id del mismo
+	def dwld_br_vid_id_as_name(self,vidid):
+		#video con todos sus renditions
+		dat={}
+		f=self.find_item_by_id(vidid)		
+		if f==None:
+			raise ValueError, 'Archivo eliminado o no disponible en Brightcove'
+			return None
+		for rn in f["renditions"]:
+			dat[rn["size"]]=rn["url"]		
+		ord=sorted(dat,reverse = True)		
+		#cuando ya ordene los renditions
+		#url=f['videoFullLength']['url']		
+		url=dat[ord[0]]
+		tamano=ord[0]
+		return url,tamano
+		# desc=f['shortDescription']
+		# file_name = url.split('/')[-1]
+		# file_name = vidid+".mp4"
+		# if not os.path.exists(file_name):
+		# 	tamano=ord[0]/1000.00/1000.00
+		# 	print u"Archivo: %s, tamaño: %s MB" % (file_name, tamano)
+		# 	print u"Desde URL: ",url
+		# 	resp=urllib.urlretrieve (url, file_name)			
+		# 	print "Descarga finalizada"			
+		# 	#retorno el objeto completo con toda la data del video en proceso se extrae lo que se necesite
+		# 	return f,file_name
+		# else:
+		# 	#raise Exception("Archivo ya descargado en disco !")
+		# 	print "Archivo ya descargado en disco !"
+		# 	return None 	
 			
 	def write_file(self,file,newLine):	
 		file = open(file, "a")
@@ -344,13 +396,14 @@ if __name__ == "__main__":
 	parser.add_argument("-l", "--load",  action="store_true", dest="load", help='Descarga la data de Brightcove a este equipo, luego puede usar exportarla a csv' )    	
 	parser.add_argument("-x", "--export", action="store_true", dest="export", help='Exporta la data a un fichero .csv')	
 	parser.add_argument("-f", "--find",  action="store", dest="find", type=int, help='Busca un item por id en la data local' )    	
-	parser.add_argument("-g", "--gets",  action="store", dest="gets", type=int, help='Get Item por id en la data remota rbightcove' )    	
-	parser.add_argument("-t", "--tags",  action="store", dest="tags", type=str, help='Busca un item por tags' )    	
-	parser.add_argument("-u", "--update",  action="store", dest="update", type=int, help='Actualiza a alwaysVallable un id' )    	
+	parser.add_argument("-g", "--gets",  action="store", dest="gets", type=int, help='Busca un item por id en la data remota brightcove' )    	
+	parser.add_argument("-t", "--tags",  action="store", dest="tags", type=str, help='Busca items por tags' )    	
+	parser.add_argument("-u", "--update",  action="store", dest="update", type=int, help='Actualiza a alwaysAvailable un id' )    	
 	parser.add_argument("-c", "--cfind",  action="store", dest="creat", type=str, help='Busca un item por creation date' )    	
 	parser.add_argument("-d", "--download",  action="store", dest="download", type=int, help='Descarga un video desde Brightcove dado un ID ') 
 	parser.add_argument("-r", "--remove",  action="store", dest="remove", type=int, help='Elimina video de Brightcove dado un ID ') 
 	parser.add_argument("-b", "--bestr",  action="store", dest="bestr", type=int, help='Descarga el mejor rendition del video dado un ID ') 
+	parser.add_argument("-s", "--summary",  action="store_true", dest="summary", help='Emite el total de videos, la suma de todos los videos y la suma de los Renditions mas grandes') 
 
 	options = parser.parse_args()
 
@@ -415,6 +468,9 @@ if __name__ == "__main__":
 		bc=bcove(rtoken,tipo,wtoken)	
 		bc.delete_video(options.remove)
 
+	if options.summary:
+		bc=bcove(rtoken,tipo)	
+		bc.get_summary()
 
 	# if options.datalocal:
 	# 	a=read_data()
