@@ -31,6 +31,7 @@ Requiere:
 - Copia la data de prueba a tu ubicacion actual:
 
 ::
+
  cp pybright/video_data.dat .
 
 Instalacion:
