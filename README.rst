@@ -12,9 +12,8 @@ PyBright puede ejecutarse desde la linea de comandos, o puede tambien usarse com
 Requerimientos:
 ---------------
 
-- Preferiblemente utilice dentro de un virtualenv, 
+- Preferiblemente utilice dentro de un virtualenv: 
 
-- Setup Tools - VirtualEnv
 
 ::
 
@@ -43,7 +42,7 @@ Requerimientos:
 ::
 
  cp pybright/video_data.dat .
- 
+
 
 Instalacion:
 ------------
@@ -58,6 +57,7 @@ Utilizacion:
 ------------
 
 ::
+
  usage: bcove.py [-h] [-v] [-p] [-l] [-x] [-f FIND] [-g GETS] [-t TAGS]
                 [-u UPDATE] [-c CREAT] [-d DOWNLOAD] [-r REMOVE] [-b BESTR]
 
