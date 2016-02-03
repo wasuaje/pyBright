@@ -56,6 +56,8 @@ Instalacion:
 Utilizacion:
 ------------
 
+- Opciones desde la linea de comandos:
+
 ::
 
  usage: bcove.py [-h] [-v] [-p] [-l] [-x] [-f FIND] [-g GETS] [-t TAGS]
@@ -74,7 +76,7 @@ Utilizacion:
   -g GETS, --gets GETS  Get Item por id en la data remota rbightcove
   -t TAGS, --tags TAGS  Busca un item por tags
   -u UPDATE, --update UPDATE
-                        Actualiza a alwaysVallable un id
+                        Actualiza a alwaysAvailable un id
   -c CREAT, --cfind CREAT
                         Busca un item por creation date
   -d DOWNLOAD, --download DOWNLOAD

@@ -346,7 +346,7 @@ if __name__ == "__main__":
 	parser.add_argument("-f", "--find",  action="store", dest="find", type=int, help='Busca un item por id en la data local' )    	
 	parser.add_argument("-g", "--gets",  action="store", dest="gets", type=int, help='Get Item por id en la data remota rbightcove' )    	
 	parser.add_argument("-t", "--tags",  action="store", dest="tags", type=str, help='Busca un item por tags' )    	
-	parser.add_argument("-u", "--update",  action="store", dest="update", type=int, help='Actualiza a alwaysVallable un id' )    	
+	parser.add_argument("-u", "--update",  action="store", dest="update", type=int, help='Actualiza a alwaysAvailable un id' )    	
 	parser.add_argument("-c", "--cfind",  action="store", dest="creat", type=str, help='Busca un item por creation date' )    	
 	parser.add_argument("-d", "--download",  action="store", dest="download", type=int, help='Descarga un video desde Brightcove dado un ID ') 
 	parser.add_argument("-r", "--remove",  action="store", dest="remove", type=int, help='Elimina video de Brightcove dado un ID ') 
