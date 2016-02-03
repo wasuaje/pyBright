@@ -87,7 +87,7 @@ Utilizacion:
                         Descarga el mejor rendition del video dado un ID
 
 
-- Ejemplos desde la linea de comandos (Crea un CSV de la data existente):
+- Ejemplo1  desde la linea de comandos (Crea un CSV de la data existente):
 
 ::
  
@@ -96,6 +96,10 @@ Utilizacion:
  $ ls
  LICENSE		README.rst	defaults.cfg	myprogram.py	pyBright	video_data.dat	videos.csv
 
+
+- Ejemplo2  desde la linea de comandos (Buscar un archivo de video por un id conocido):
+
+::
 
  python bcove.py -vf 2555607253001
 
