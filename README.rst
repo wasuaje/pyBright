@@ -17,8 +17,6 @@ Requerimientos:
 - Prereiblemente virtualenv 
 
 
-
-
 ::
 
  # Install Setuptools in Debian / Ubuntu
@@ -41,14 +39,21 @@ Requerimientos:
  #Virtualenv
  pip install virtualenv
 
+::
+ 
+ #Activar virtualenv
+ virtualenv myvenv
+
+ cd myvenv
+
+ source/bin activate
 
 ::
 
- #Install simpleJson
+ #Instalar simplejson dentro de nuestro ambiente virtual
  pip install simplejson
 
-
-- Archivo de configuracion con los valores wtoken y rtoken llamado defaults.cfg como el siguiente
+- Crear archivo de configuracion con los valores wtoken y rtoken llamado defaults.cfg como el siguiente
  
 
 ::
@@ -57,15 +62,12 @@ Requerimientos:
  rtoken=insert read token here
  wtoken=insert write token here
 
-- La data de prueba en tu ubicacion actual:
+- Copiar la data de prueba en tu ubicacion actual:
 
 ::
 
  cp pybright/video_data.dat .
 
-
-Instalacion:
-------------
 
 - Clonar el proyecto:
 
