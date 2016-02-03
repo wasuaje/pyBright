@@ -7,6 +7,14 @@ Es un proyecto escrito en Python,  sirve como  Wrapper al API de : `Brightcove <
 PyBright puede ejecutarse desde la linea de comandos, o puede tambien usarse como libreria en nuestros scripts python.
 
 
+Instalacion:
+------------
+
+- Clonar el proyecto:
+
+::
+ 
+ git clone https://github.com/wasuaje/pyBright.git .
 
 
 Requerimientos:
@@ -37,21 +45,13 @@ Requerimientos:
  rtoken=insert read token here
  wtoken=insert write token here
 
-- La data de prueba a tu ubicacion actual:
+- La data de prueba en tu ubicacion actual:
 
 ::
 
  cp pybright/video_data.dat .
 
 
-Instalacion:
-------------
-
-- Luego de clonar el proyecto en un directorio vacìo, coloque su read token y su write token dentro de un archivo llamado defaults.cfg en la raiz de su proyecto
-
-::
- 
- git clone https://github.com/wasuaje/pyBright.git .
 
 Utilizacion:
 ------------
@@ -86,6 +86,15 @@ Utilizacion:
   -b BESTR, --bestr BESTR
                         Descarga el mejor rendition del video dado un ID
 
+
+- Ejemplo desde la linea de comandos (Crea un CSV de la data existente):
+
+::
+ 
+ python bcove.py -vx 
+ 
+ $ ls
+ LICENSE		README.rst	defaults.cfg	myprogram.py	pyBright	video_data.dat	videos.csv
 
 Ayuda:
 -----------------
