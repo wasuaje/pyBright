@@ -224,9 +224,17 @@ Ejemplos de uso:
  >>> data = bc.find_local_item_by_id(id_to_seach)
  find_local_item_by_id 2555607253001
  >>> print data
-  
+
  {'videoFullLength': {'referenceId': None, 'displayName': u'Agust\xedn blanco Mu\xf1oz - Historiador-20130719-161102_446.mp4', 'url': 'http://brightcove.vo.llnwd.net/e1/uds/pd/986049905001/986049905001_2555625549001_Agust-n-blanco-Mu-oz---Historiador-20130719-161102-446.mp4', 'encodingRate': 404571, 'frameWidth': 480, 'audioOnly': False, 'controllerType': 'DEFAULT', 'videoDuration': 1916808, 'videoCodec': 'H264', 'videoContainer': 'MP4', 'frameHeight': 320, 'remoteStreamName': None, 'remoteUrl': None, 'uploadTimestampMillis': 1374269857212L, 'id': 2555625549001L, 'size': 99313859}, 'creationDate': '1374269050639', 'playsTotal': 2433, 'economics': 'AD_SUPPORTED', 'name': u'Agust\xedn Blanco Mu\xf1oz - Historiador', 'publishedDate': '1374269050639', 'renditions': [{'referenceId': None, 'displayName': u'Agust\xedn blanco Mu\xf1oz - Historiador-20130719-161102_446.mp4', 'url': 'http://brightcove.vo.llnwd.net/e1/uds/pd/986049905001/986049905001_2555617492001_Agust-n-blanco-Mu-oz---Historiador-20130719-161102-446.mp4', 'encodingRate': 145480, 'frameWidth': 400, 'audioOnly': False, 'controllerType': 'DEFAULT', 'videoDuration': 1916808, 'videoCodec': 'H264', 'videoContainer': 'MP4', 'frameHeight': 264, 'remoteStreamName': None, 'remoteUrl': None, 'uploadTimestampMillis': 1374269338745L, 'id': 2555617492001L, 'size': 35623461}, {'referenceId': None, 'displayName': u'Agust\xedn blanco Mu\xf1oz - Historiador-20130719-161102_446.mp4', 'url': 'http://brightcove.vo.llnwd.net/e1/uds/pd/986049905001/986049905001_2555625549001_Agust-n-blanco-Mu-oz---Historiador-20130719-161102-446.mp4', 'encodingRate': 404571, 'frameWidth': 480, 'audioOnly': False, 'controllerType': 'DEFAULT', 'videoDuration': 1916808, 'videoCodec': 'H264', 'videoContainer': 'MP4', 'frameHeight': 320, 'remoteStreamName': None, 'remoteUrl': None, 'uploadTimestampMillis': 1374269857212L, 'id': 2555625549001L, 'size': 99313859}, {'referenceId': None, 'displayName': u'Agust\xedn blanco Mu\xf1oz - Historiador-20130719-161102_446.mp4', 'url': 'http://brightcove.vo.llnwd.net/e1/uds/pd/986049905001/986049905001_2555617518001_Agust-n-blanco-Mu-oz---Historiador-20130719-161102-446.mp4', 'encodingRate': 313073, 'frameWidth': 400, 'audioOnly': False, 'controllerType': 'DEFAULT', 'videoDuration': 1916808, 'videoCodec': 'H264', 'videoContainer': 'MP4', 'frameHeight': 264, 'remoteStreamName': None, 'remoteUrl': None, 'uploadTimestampMillis': 1374269374883L, 'id': 2555617518001L, 'size': 77272796}], 'tags': [u'Profesor Agust\xedn Blanco Mu\xf1oz', 'golpe de estado', 'Henrique Capriles Radonski', 'venezuela', 'democracia', 'ucv', 'HISTORIADOR', 'poderes militares', 'ascensos militares'], 'longDescription': None, 'videoStillURL': 'http://brightcove.vo.llnwd.net/e1/pd/986049905001/986049905001_2555626968001_video-still-for-video-2555607253001.jpg?pubId=986049905001', 'length': 1916808, 'referenceId': None, 'playsTrailingWeek': 0, 'linkText': None, 'lastModifiedDate': '1374272846421', 'thumbnailURL': 'http://brightcove.vo.llnwd.net/e1/pd/986049905001/986049905001_2555626967001_thumbnail-for-video-2555607253001.jpg?pubId=986049905001', 'linkURL': None, 'id': 2555607253001L, 'shortDescription': u'Agust\xedn Blanco Mu\xf1oz - Historiador'}
 
+ >>> type(data)
+ <type 'dict'>
+
+ >>> print data['videoFullLength']['videoCodec']
+ H264
+ 
+ >>> print data['videoFullLength']['videoContainer']
+ MP4
 
 - Ejemplo 5 Descargar un video desde un programa / script
 
