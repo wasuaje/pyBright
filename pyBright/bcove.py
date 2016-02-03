@@ -28,9 +28,20 @@ class bcove:
 			'playlist_fields':'id,name,shortDescription,playlistType,videoIds,accountId,referenceId,filterTags,thumbnailURL'	
 			}
 		
-	def __init__(self, rtoken,tipo,wtoken=''):
-		self.rtoken = rtoken
-		self.wtoken = wtoken
+	def __init__(self, tipo):
+
+		config = ConfigParser.ConfigParser()
+		try:
+			config.readfp(open('defaults.cfg'))
+		except:
+			print "No se encontro el archivo de configuracion"
+
+		self.rtoken=config.get('Config','rtoken')
+		self.wtoken=config.get('Config','wtoken')
+		self.medulatoken=config.get('Config','medulatoken')
+
+		#self.rtoken = rtoken
+		#self.wtoken = wtoken
 		self.tipo   = tipo
 		self.parametros={}
 		self.parametros['token']=self.rtoken	
@@ -328,12 +339,6 @@ class bcove:
 
 if __name__ == "__main__":
 
-	config = ConfigParser.ConfigParser()
-	config.readfp(open('defaults.cfg'))
-
-	rtoken=config.get('Config','rtoken')
-	wtoken=config.get('Config','wtoken')
-	medulatoken=config.get('Config','medulatoken')
 
 	usage = "utilizacion: %prog [options] "
 	parser = argparse.ArgumentParser(description='Wrapper around Brightcove API')
