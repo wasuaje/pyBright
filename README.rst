@@ -9,17 +9,26 @@ PyBright puede ejecutarse desde la linea de comandos, o puede tambien usarse com
 
 
 
-Requiere:
----------
+Requerimientos:
+---------------
 
-- Requiere SimpleJson 
+- Preferiblemente utilice dentro de un virtualenv, 
+
+::
+
+- Setup Tools - VirtualEnv
+ sudo apt-get install python-setuptools o sudo yum install python-setuptools
+ sudo easy-install pip
+ pip install virtualenv
+
+- SimpleJson 
 
 ::
  
  pip install simplejson
 
 
-- Crea un archivo de configuracion con los valores wtoken y rtoken llamado defaults.cfg
+- Archivo de configuracion con los valores wtoken y rtoken llamado defaults.cfg como el siguiente
  
 
 ::
