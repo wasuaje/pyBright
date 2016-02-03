@@ -60,7 +60,7 @@ Utilizacion:
 
 ::
 
- $ python bcove.py
+ $ python pyBright/bcove.py
 
  usage: bcove.py [-h] [-v] [-p] [-l] [-x] [-f FIND] [-g GETS] [-t TAGS]
                 [-u UPDATE] [-c CREAT] [-d DOWNLOAD] [-r REMOVE] [-b BESTR]
@@ -93,17 +93,29 @@ Utilizacion:
 
 ::
  
- python bcove.py -vx 
+ python pyBright/bcove.py -vx 
  
  $ ls
  LICENSE		README.rst	defaults.cfg	myprogram.py	pyBright	video_data.dat	videos.csv
 
 
-- Ejemplo2  desde la linea de comandos (Buscar un archivo de video por un id conocido):
+- Ejemplo 2  Descargar un video conocido su ID desde la l inea de comandos:
 
 ::
 
- $ python bcove.py -vf 2555607253001
+ $ python pyBright/bcove.py -vd 2555607253001
+
+  find_item_by_id 2555607253001
+  Archivo: 986049905001_2555625549001_Agust-n-blanco-Mu-oz---Historiador-20130719-161102-446.mp4, tamaño: 99.313859 MB
+  Desde URL:  http://brightcove.vo.llnwd.net/e1/uds/pd/986049905001/986049905001_2555625549001_Agust-n-blanco-Mu-oz---Historiador-20130719-161102-446.mp4
+  Descarga finalizada
+
+
+- Ejemplo 3  Buscar un video conocido su ID desde la linea de comandos:
+
+::
+
+ $ python pyBright/bcove.py -vf 2555607253001
 
  {  
    'videoFullLength':{  
@@ -148,42 +160,6 @@ Utilizacion:
          'id':2555617492001         L,
          'size':35623461
       },
-      {  
-         'referenceId':None,
-         'displayName':u'Agust\xedn blanco Mu\xf1oz - Historiador-20130719-161102_446.mp4',
-         'url':'http://brightcove.vo.llnwd.net/e1/uds/pd/986049905001/986049905001_2555625549001_Agust-n-blanco-Mu-oz---Historiador-20130719-161102-446.mp4',
-         'encodingRate':404571,
-         'frameWidth':480,
-         'audioOnly':False,
-         'controllerType':'DEFAULT',
-         'videoDuration':1916808,
-         'videoCodec':'H264',
-         'videoContainer':'MP4',
-         'frameHeight':320,
-         'remoteStreamName':None,
-         'remoteUrl':None,
-         'uploadTimestampMillis':1374269857212         L,
-         'id':2555625549001         L,
-         'size':99313859
-      },
-      {  
-         'referenceId':None,
-         'displayName':u'Agust\xedn blanco Mu\xf1oz - Historiador-20130719-161102_446.mp4',
-         'url':'http://brightcove.vo.llnwd.net/e1/uds/pd/986049905001/986049905001_2555617518001_Agust-n-blanco-Mu-oz---Historiador-20130719-161102-446.mp4',
-         'encodingRate':313073,
-         'frameWidth':400,
-         'audioOnly':False,
-         'controllerType':'DEFAULT',
-         'videoDuration':1916808,
-         'videoCodec':'H264',
-         'videoContainer':'MP4',
-         'frameHeight':264,
-         'remoteStreamName':None,
-         'remoteUrl':None,
-         'uploadTimestampMillis':1374269374883         L,
-         'id':2555617518001         L,
-         'size':77272796
-      }
    ],
    'tags':[  
       u'Profesor Agust\xedn Blanco Mu\xf1oz',
