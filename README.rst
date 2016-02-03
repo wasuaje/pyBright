@@ -60,6 +60,8 @@ Utilizacion:
 
 ::
 
+ $ python bcove.py
+
  usage: bcove.py [-h] [-v] [-p] [-l] [-x] [-f FIND] [-g GETS] [-t TAGS]
                 [-u UPDATE] [-c CREAT] [-d DOWNLOAD] [-r REMOVE] [-b BESTR]
 
@@ -73,7 +75,7 @@ Utilizacion:
                         puede usar exportarla a csv
   -x, --export          Exporta la data a un fichero .csv
   -f FIND, --find FIND  Busca un item por id en la data local
-  -g GETS, --gets GETS  Get Item por id en la data remota rbightcove
+  -g GETS, --gets GETS  Get Item por id en la data remota brightcove
   -t TAGS, --tags TAGS  Busca un item por tags
   -u UPDATE, --update UPDATE
                         Actualiza a alwaysAvailable un id
@@ -101,7 +103,7 @@ Utilizacion:
 
 ::
 
- python bcove.py -vf 2555607253001
+ $ python bcove.py -vf 2555607253001
 
  {  
    'videoFullLength':{  
@@ -206,6 +208,7 @@ Utilizacion:
    'id':2555607253001   L,
    'shortDescription':u'Agust\xedn Blanco Mu\xf1oz - Historiador'
  }
+
 
 
 Ayuda:
