@@ -14,9 +14,10 @@ Requerimientos:
 
 - Preferiblemente utilice dentro de un virtualenv, 
 
+- Setup Tools - VirtualEnv
+
 ::
 
-- Setup Tools - VirtualEnv
  sudo apt-get install python-setuptools o sudo yum install python-setuptools
  sudo easy-install pip
  pip install virtualenv
@@ -37,11 +38,12 @@ Requerimientos:
  rtoken=insert read token here
  wtoken=insert write token here
 
-- Copia la data de prueba a tu ubicacion actual:
+- La data de prueba a tu ubicacion actual:
 
 ::
 
  cp pybright/video_data.dat .
+ 
 
 Instalacion:
 ------------
