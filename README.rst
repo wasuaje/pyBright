@@ -7,32 +7,44 @@ Es un proyecto escrito en Python,  sirve como  Wrapper al API de : `Brightcove <
 PyBright puede ejecutarse desde la linea de comandos, o puede tambien usarse como libreria en nuestros scripts python.
 
 
-Instalacion:
-------------
-
-- Clonar el proyecto:
-
-::
- 
- git clone https://github.com/wasuaje/pyBright.git .
 
 
 Requerimientos:
 ---------------
 
-- Preferiblemente utilice dentro de un virtualenv: 
+- Python 2.7
+- SimpleJson
+- Prereiblemente virtualenv 
+
+
 
 
 ::
 
- sudo apt-get install python-setuptools # sudo yum install python-setuptools
- sudo easy-install pip
+ # Install Setuptools in Debian / Ubuntu
+ sudo apt-get install python-setuptools 
+ 
+ # Centos / Fedora
+ yum install python-setuptools
+
+::
+
+ #Install pip in Debian / Ubuntu
+ sudo aptitude install python-pip
+ 
+ #Centos / Fedora
+ yum install python-pip
+
+
+::
+
+ #Virtualenv
  pip install virtualenv
 
-- SimpleJson 
 
 ::
- 
+
+ #Install simpleJson
  pip install simplejson
 
 
@@ -51,6 +63,15 @@ Requerimientos:
 
  cp pybright/video_data.dat .
 
+
+Instalacion:
+------------
+
+- Clonar el proyecto:
+
+::
+ 
+ git clone https://github.com/wasuaje/pyBright.git .
 
 
 Utilizacion:
